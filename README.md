@@ -1,4 +1,4 @@
-# GSEM Dual Subtraction
+# Auto-dN-dS
 A package to automate the retrieval, alignment, and dN/dS calculation of the whole CDS sequences across species.
 
 ## Overview of scripts
