@@ -1,0 +1,5 @@
+requests
+concurrent.futures
+ensembl_rest
+tqdm
+biopython
