@@ -2,7 +2,7 @@
 A package to automate the retrieval, alignment, and dN/dS calculation of the whole CDS sequences across species.
 
 ## Overview of scripts
-  1) mastercode.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  1) mastercode.py: main script, it allows users to select and run specific scripts or all available scripts in a directory.
 
   2) 1list.py: this script retrieves common protein-coding genes shared between human and specified species from Ensembl database using multithreading and writes them to a file. It then saves the list in "list.txt" in the "temp" directory.
 
