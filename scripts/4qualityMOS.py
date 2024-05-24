@@ -56,7 +56,7 @@ if __name__ == "__main__":
     # Navigate to the temp directory to read the variable file
     os.chdir(os.path.join("temp"))
 
-    with open("alignments_dir_name.txt", "r") as file:
+    with open("alignfolder.txt", "r") as file:
         var = file.readline().strip()
 
     # Navigate to the results directory
