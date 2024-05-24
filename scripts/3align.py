@@ -55,7 +55,7 @@ def main():
     current_directory = os.path.dirname(os.path.abspath(__file__))
     parent_dir = os.path.dirname(current_directory)
     folder_name_file_path = os.path.join(parent_dir, '..', 'temp', 'output_folder_name.txt')
-    log_file_path = os.path.join(current_directory, 'temp', 'log.txt')
+    log_file_path = os.path.join(current_directory, '..', 'temp', 'log.txt')
     ensure_log_dir_exists(log_file_path)
     # Print the current time at the beginning
     start_time = datetime.now()
