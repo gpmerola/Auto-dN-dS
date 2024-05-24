@@ -38,7 +38,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-Run mastercode.py:
+Run the main code:
 
 ```console
 python mastercode.py
