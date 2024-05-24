@@ -6,13 +6,16 @@ A package to automate the retrieval, alignment, and dN/dS calculation of the who
 
   2) 1list.py: main script, with a customizable part at the beginning to set up variables and inputs.
 
-  3) 1list.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  3) 2CDS_fetcher.py: main script, with a customizable part at the beginning to set up variables and inputs.
 
-  4) 1list.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  4) 3align.py: main script, with a customizable part at the beginning to set up variables and inputs.
 
-  5) 1list.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  5) 4qualityMOS.py: main script, with a customizable part at the beginning to set up variables and inputs.
 
-  6) 1list.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  6) 5kaks.py: main script, with a customizable part at the beginning to set up variables and inputs.
+
+  7) macse_v2.07.jar: main script, with a customizable part at the beginning to set up variables and inputs.
+
 
 ## Setup
 This README file provides instructions on how to set up the project environment by installing the required dependencies for both R and Python.
