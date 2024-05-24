@@ -14,7 +14,7 @@ temp_directory = os.path.join(current_directory, '..', 'temp')
 if not os.path.exists(temp_directory):
     os.makedirs(temp_directory)
 
-input_value = input("Please enter the species, separated by commas (e.g., 'mouse,rat') or 'd' for debug mode: ")
+input_value = input("Please enter the name of a single species (e.g., 'mouse'), or enter 'd' for debug mode: ")
 species_input = ["mouse"] if input_value.lower() == 'd' else [species.strip() for species in input_value.split(',')]
 debug_mode = input_value.lower() == 'd'
 
