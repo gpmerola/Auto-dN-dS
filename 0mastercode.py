@@ -3,14 +3,21 @@ import sys
 import time
 
 def run_script(script_filename):
-    python_cmd = 'python3' if sys.version_info.major == 3 else 'python'
+    python_cmds = ['python', 'python3']
     script_path = f'scripts/{script_filename}'
 
-    start_time = time.time()
-    subprocess.run([python_cmd, script_path])
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-    print(f"Script '{script_filename}' took {elapsed_time:.2f} seconds to execute.")
+    for python_cmd in python_cmds:
+        try:
+            start_time = time.time()
+            result = subprocess.run([python_cmd, script_path], check=True)
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f"Script '{script_filename}' took {elapsed_time:.2f} seconds to execute using {python_cmd}.")
+            break  # Exit the loop if the script runs successfully
+        except subprocess.CalledProcessError:
+            print(f"Failed to run script with {python_cmd}. Trying the next option.")
+        except FileNotFoundError:
+            print(f"{python_cmd} not found. Trying the next option.")
 
 def ask_user():
     scripts = {
