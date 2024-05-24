@@ -4,22 +4,20 @@ A package to automate the retrieval, alignment, and dN/dS calculation of the who
 ## Overview of scripts
   1) mastercode.py: main script, with a customizable part at the beginning to set up variables and inputs.
 
-  2) 1list.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  2) 1list.py: this script retrieves common protein-coding genes shared between human and specified species from Ensembl database using multithreading and writes them to a file. It then saves the list in "list.txt" in the "temp" directory.
 
-  3) 2CDS_fetcher.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  3) 2CDS_fetcher.py: this script fetches and saves coding sequences (CDS) for all gene symbols contained in the list.txt file in the "temp" directory, utilizing the ensembl_rest library, in the "results" folder.
 
-  4) 3align.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  4) 3align.py: this script aligns the fetched CDS using the MACSE tool in parallel processes and saves the aligned sequences, also logging any errors encountered during the process in the "temp" directory. It then saves the alignments in a separate subfolder within "results".
 
-  5) 4qualityMOS.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  5) 4qualityMOS.py: this script performs QC, calculating the multiple overlap score (MOS) for each set of aligned sequences in a directory, then deleting files with an MOS below a specified threshold (default 0.8).
 
-  6) 5kaks.py: main script, with a customizable part at the beginning to set up variables and inputs.
+  6) 5kaks.py: this R script processes sequence alignment files to calculate dN/dS values for human versus other species pairs, stores the results in Excel files, and then calculates summary statistics from those Excel files. All results are saved in "results".
 
-  7) macse_v2.07.jar: main script, with a customizable part at the beginning to set up variables and inputs.
+  7) macse_v2.07.jar: is an executable JAR file containing the MACSE program, which aligns protein-coding nucleotide sequences while accounting for frameshifts and stop codons (https://www.agap-ge2pop.org/macse/).
 
 
 ## Setup
-This README file provides instructions on how to set up the project environment by installing the required dependencies for both R and Python.
-
 First of all, download the Github package and navigate in the package directory:
 
 ```console
