@@ -64,7 +64,7 @@ ka <- function(file_path) {
     }
     results[[gene_name]] <- gene_results
   }, error = function(e) {
-    print(paste("Error processing:", gene_name, "with message:", e$message))
+    print(paste(gene_name, "with message:", e$message))
   })
   return(gene_results)
 }
