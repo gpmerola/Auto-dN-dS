@@ -39,7 +39,7 @@ output_dir = os.path.join(base_output_dir, f"Fetched CDS sequences for {'_'.join
 os.makedirs(output_dir, exist_ok=True)
 
 # Update folder name file
-with open(os.path.join(base_path, '..', 'temp', 'output_folder_name.txt'), 'w') as f:
+with open(os.path.join(base_path, '..', 'temp', 'alignfolder.txt'), 'w') as f:
     f.write(f"Fetched CDS sequences for {'_'.join(spc)}")
 
 # Fetch and save CDS sequences
