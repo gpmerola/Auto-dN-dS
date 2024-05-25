@@ -4,7 +4,7 @@ A package to automate the retrieval, alignment, and dN/dS calculation of the who
 ## Overview of scripts
   1) mastercode.py: main script, it allows users to select and run specific scripts or all available scripts in a directory.
 
-  2) 1list.py: this script retrieves common protein-coding genes shared between human and specified species from Ensembl database using multithreading and writes them to a file. It then saves the list in "list.txt" in the "temp" directory.
+  2) 1list.py: this script retrieves common protein-coding genes shared between human and a single specified species from Ensembl database using multithreading and writes them to a file. It then saves the list in "list.txt" in the "temp" directory.
 
   3) 2CDS_fetcher.py: this script fetches and saves coding sequences (CDS) for all gene symbols contained in the list.txt file in the "temp" directory, utilizing the ensembl_rest library, in the "results" folder.
 
