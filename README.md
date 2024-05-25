@@ -44,7 +44,7 @@ Run the main code:
 python mastercode.py
 ```
 
-Provide input regarding which parts of the code to run; type "all" if you want the whole code to run (see the above section "Overview of scripts" to understand the functioning of each part).
+Provide input regarding which parts of the code to run; type "all" if you want the whole code to run (see the above section "Overview of scripts" to understand the functioning of each part). Then, input the species name (common or scientific, see https://www.ensembl.org/info/about/species.html for acceptable inputs). Use "d" for debug mode (10 genes only, human and mouse).
       
 The parts must be run in order, with "3" being the most computationally intensive step. Only step "1" and "2" require an internet connection to function.
 
