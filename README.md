@@ -38,14 +38,18 @@ pip install -r requirements.txt
 ```
 
 ### R Packages
-seqinr, phangorn: Phylogenetic and sequence analysis.
-writexl, readxl: Reading and writing Excel files.
-tidyverse, dplyr: Data manipulation and visualization.
+- seqinr, phangorn: Phylogenetic and sequence analysis.
+  
+- writexl, readxl: Reading and writing Excel files.
+  
+- tidyverse, dplyr: Data manipulation and visualization.
 
 ### Python Libraries:
-requests, ensembl_rest: Web and database interaction.
-concurrent.futures, tqdm: Asynchronous execution and progress tracking.
-biopython: Computational biology tools.
+-requests, ensembl_rest: Web and database interaction.
+
+-concurrent.futures, tqdm: Asynchronous execution and progress tracking.
+
+-biopython: Computational biology tools.
 
 ## Usage
 Run the main code:
