@@ -45,11 +45,11 @@ pip install -r requirements.txt
 - tidyverse, dplyr: Data manipulation and visualization.
 
 ### Python Libraries:
--requests, ensembl_rest: Web and database interaction.
+- requests, ensembl_rest: Web and database interaction.
 
--concurrent.futures, tqdm: Asynchronous execution and progress tracking.
+- concurrent.futures, tqdm: Asynchronous execution and progress tracking.
 
--biopython: Computational biology tools.
+- biopython: Computational biology tools.
 
 ## Usage
 Run the main code:
