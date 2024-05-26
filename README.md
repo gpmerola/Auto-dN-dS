@@ -1,12 +1,12 @@
 # Auto-dN-dS
-A package to automate the retrieval, alignment, and dN/dS calculation of the whole CDS sequences across species.
+Auto-dN-dS is a package designed to automate the retrieval, alignment, and dN/dS calculation of coding sequences (CDS) across species. This package downloads the entire CDS of humans and a user-selected species, aligning these sequences, performing quality control, and calculating the dN/dS ratio (Hurst et al. 2002, 10.1016/S0168-9525(02)02722-1) in order to estimate the level of purifying or positive selection.
 
 ## Overview of scripts
   1) mastercode.py: main script, it allows users to select and run specific scripts or all available scripts in a directory.
 
   2) 1list.py: this script retrieves common protein-coding genes shared between human and a single specified species from Ensembl database using multithreading and writes them to a file. It then saves the list in "list.txt" in the "temp" directory.
 
-  3) 2CDS_fetcher.py: this script fetches and saves coding sequences (CDS) for all gene symbols contained in the list.txt file in the "temp" directory, utilizing the ensembl_rest library, in the "results" folder.
+  3) 2CDS_fetcher.py: this script fetches and saves CDS for all gene symbols contained in the list.txt file in the "temp" directory, utilizing the ensembl_rest library, in the "results" folder.
 
   4) 3align.py: this script aligns the fetched CDS using the MACSE tool in parallel processes and saves the aligned sequences, also logging any errors encountered during the process in the "temp" directory. It then saves the alignments in a separate subfolder within "results".
 
