@@ -17,6 +17,11 @@ Auto-dN-dS is a package designed to automate the retrieval, alignment, and dN/dS
 
   - macse_v2.07.jar: is an executable JAR file containing the MACSE program, which aligns protein-coding nucleotide sequences while accounting for frameshifts and stop codons [(Ranwez et al., 2011)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022594).
 
+## Prerequisites
+  - Python 3.6 or higher
+  - R 3.6 or higher
+  - Java (for running MACSE)
+  - Git
 
 ## Setup
 First of all, download the Github package and navigate in the package directory:
@@ -26,31 +31,12 @@ git clone https://github.com/gpmerola/Auto-dN-dS.git
 cd Auto-dN-dS
 ```
 
-Then, install the R and Python dependecies.
-To install the required R packages, run the following command:
+Install the R and Python dependencies:
 
 ```console
 Rscript requirements.R
-```
-To install the required Python packages, run the following command:
-
-```console
 pip install -r requirements.txt
 ```
-
-### R Packages
-- seqinr, phangorn: Phylogenetic and sequence analysis.
-  
-- writexl, readxl: Reading and writing Excel files.
-  
-- tidyverse, dplyr: Data manipulation and visualization.
-
-### Python Libraries:
-- requests, ensembl_rest: Web and database interaction.
-
-- concurrent.futures, tqdm: Asynchronous execution and progress tracking.
-
-- biopython: Computational biology tools.
 
 ## Usage
 Run the main code:
@@ -86,6 +72,14 @@ This directory contains log files and necessary intermediate files.
   - log.txt: A log file containing messages and any errors encountered during the processing of gene alignments.
 
   - combined_<gene>.fasta: Combined FASTA files for each gene (before alignment).
+
+## Troubleshooting
+Ensure that all dependencies are installed correctly.
+Check log.txt for any error messages during the processing steps.
+Verify that the species name provided is acceptable as per Ensembl's list.
+
+## Contributing
+Contributions are welcome. Please submit a pull request or open an issue to discuss any changes or improvements.
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
