@@ -15,7 +15,7 @@ Auto-dN-dS is a package designed to automate the retrieval, alignment, and dN/dS
 
   - 5kaks.py: this R script processes sequence alignment files to calculate dN/dS values for human versus other species pairs, stores the results in Excel files, and then calculates summary statistics from those Excel files. All results are saved in "results".
 
-  - macse_v2.07.jar: is an executable JAR file containing the MACSE program, which aligns protein-coding nucleotide sequences while accounting for frameshifts and stop codons [(Ranwez et al., 2011)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022594) (https://www.agap-ge2pop.org/macse/).
+  - macse_v2.07.jar: is an executable JAR file containing the MACSE program, which aligns protein-coding nucleotide sequences while accounting for frameshifts and stop codons [(Ranwez et al., 2011)](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0022594, https://www.agap-ge2pop.org/macse/).
 
 
 ## Setup
