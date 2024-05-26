@@ -1,11 +1,8 @@
 # List of required R packages
 required_packages <- c(
   "seqinr",
-  "ape",
-  "phylotools",
   "phangorn",
   "writexl",
-  "openxlsx",
   "tidyverse",
   "dplyr",
   "readxl"
