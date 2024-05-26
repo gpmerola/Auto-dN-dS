@@ -4,9 +4,10 @@ from concurrent.futures import ProcessPoolExecutor
 from datetime import datetime
 from Bio import SeqIO
 
-max_workers = 8
+max_workers = 8  # Define the maximum number of worker processes to use.
 
 def process_gene_dir(args):
+    """Process each gene directory: combine Fasta files, align sequences, and handle errors."""
     gene_dir, jar_path, alignments_dir, log_file_path = args
     gene_name = os.path.basename(gene_dir)
     aligned_file_name = f"alignment_{gene_name}.fasta"
@@ -17,12 +18,13 @@ def process_gene_dir(args):
 
     fasta_files = [f for f in os.listdir(gene_dir) if f.endswith('.fasta')]
 
-    with open(output_file, 'w') as outfile:  # Ensure file is clear before writing
+    with open(output_file, 'w') as outfile:  # Combine Fasta files into one.
         for fname in fasta_files:
             with open(os.path.join(gene_dir, fname)) as infile:
                 seq_data = infile.read()
                 outfile.write(seq_data)
                 outfile.write('\n')
+
     try:
         print(f"Attempting to align files in directory: {gene_dir}")
         align_fasta_file(output_file, jar_path, new_name)
@@ -32,11 +34,12 @@ def process_gene_dir(args):
         return gene_name, False
 
     delete_aa_files(gene_dir)
-    with open(log_file_path, 'a') as log_file:
+    with open(log_file_path, 'a') as log_file:  # Log the completion of processing for this gene.
         log_file.write(f"End of log for {gene_name}\n")
     return gene_name, True
 
 def align_fasta_file(fasta_path, jar_path, aligned_file):
+    """Align the Fasta file using an external Java application."""
     remove_asterisk_from_fasta(fasta_path)
     cmd = ['java', '-jar', jar_path, '-prog', 'alignSequences', '-seq', fasta_path, '-out_NT', aligned_file]
     result = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -45,6 +48,7 @@ def align_fasta_file(fasta_path, jar_path, aligned_file):
     result.check_returncode()
 
 def remove_asterisk_from_fasta(fasta_path):
+    """Remove asterisks from sequence ends in the Fasta file."""
     sequences = list(SeqIO.parse(fasta_path, "fasta"))
     for record in sequences:
         if record.seq.endswith("*"):
@@ -52,17 +56,20 @@ def remove_asterisk_from_fasta(fasta_path):
     SeqIO.write(sequences, fasta_path, "fasta")
 
 def delete_aa_files(directory):
+    """Delete auxiliary amino acid (AA) files from the directory."""
     for file_name in os.listdir(directory):
         if "_AA" in file_name:
             os.remove(os.path.join(directory, file_name))
 
 def log_error(log_file_path, gene_name, error):
+    """Log any errors encountered during the processing of a gene."""
     print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
     print(log_file_path)
     with open(log_file_path, 'a') as log_file:
         log_file.write(f"Error processing {gene_name}: {str(error)}\n")
 
 def main():
+    """Main function to set up and execute the processing of gene directories."""
     current_directory = os.getcwd()
     relative_path = os.path.join(current_directory, 'temp', 'alignfolder.txt')
     folder_name_file_path = os.path.abspath(relative_path)
