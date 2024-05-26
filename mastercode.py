@@ -3,6 +3,7 @@ import sys
 import time
 import os
 
+# Set up environment variables to define key paths
 os.environ['BASE_PATH'] = os.path.dirname(os.path.abspath(__file__))
 scripts_path = os.path.join(os.environ['BASE_PATH'], "scripts")
 os.environ['SCRIPTS_PATH'] = scripts_path
@@ -11,11 +12,12 @@ os.environ['RESULTS_PATH'] = results_path
 temp_path = os.path.join(os.environ['BASE_PATH'], "temp")
 os.environ['TEMP_PATH'] = temp_path
 
-
 def run_script(script_filename):
+    """Runs a specified script using the appropriate interpreter."""
     script_path = os.path.join(scripts_path, script_filename)
+    # Check script extension to determine execution method
     if script_filename.endswith('.py'):
-        python_cmds = ['python', 'python3']
+        python_cmds = ['python', 'python3']  # Support different Python command names
         for python_cmd in python_cmds:
             try:
                 start_time = time.time()
@@ -40,8 +42,8 @@ def run_script(script_filename):
         except FileNotFoundError:
             print(f"Rscript not found. Please ensure R is installed.")
 
-
 def ask_user():
+    """Prompts the user to choose which scripts to run from a predefined list."""
     scripts = {
         "1": "1list.py",
         "2": "2CDS_fetcher.py",
@@ -68,6 +70,7 @@ def ask_user():
         return selected_scripts
 
 def main():
+    """Main function to manage script execution based on user input."""
     scripts_to_run = ask_user()
     for script_filename in scripts_to_run:
         run_script(script_filename)
