@@ -1,6 +1,7 @@
 # Auto-dN-dS
 Auto-dN-dS is a package designed to automate the retrieval, alignment, and dN/dS calculation of coding sequences (CDS) across species. This package downloads the entire CDS of humans and a user-selected species, aligning these sequences, performing quality control, and calculating the dN/dS ratio (Hurst et al. 2002, 10.1016/S0168-9525(02)02722-1) in order to estimate the level of purifying or positive selection.
 
+
 ## Overview of scripts
   1) mastercode.py: main script, it allows users to select and run specific scripts or all available scripts in a directory.
 
