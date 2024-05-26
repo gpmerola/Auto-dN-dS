@@ -1,18 +1,17 @@
 library(seqinr)
-library(ape)
-library(phylotools)
 library(phangorn)
 library(writexl)
-library(openxlsx)
 library(tidyverse)
 library(dplyr)
 library(readxl)
 
-# Set the working directory based on the script location
+# Set the working directory to the script's location or one level above if necessary.
 set_working_directory <- function() {
+  # Check if we can use rstudioapi to find the script's path within RStudio
   if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
     setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
   } else {
+    # Try to get the script path from command line arguments if not run within RStudio
     args <- commandArgs(trailingOnly = FALSE)
     file.arg <- "--file="
     script.path <- sub(file.arg, "", args[grep(file.arg, args)])
@@ -22,7 +21,7 @@ set_working_directory <- function() {
       stop("Cannot determine the script's location.")
     }
   }
-  setwd("..")
+  setwd("..")  # Move up one directory level
 }
 
 set_working_directory()
@@ -33,12 +32,12 @@ extract_info <- function(seq_name) {
   list(species = parts[2] %||% NA, gene = parts[1] %||% NA)
 }
 
-# Define the ka function
+# Function to calculate Ka/Ks ratio for genes in a FASTA file
 ka <- function(file_path) {
   gene_name <- tools::file_path_sans_ext(basename(file_path))
   alignment <- read.alignment(file_path, format = "fasta")
   
-  # Perform error handling for kaks calculation
+  # Error handling for Ka/Ks calculation
   gene_results <- tryCatch({
     kaks_result <- kaks(alignment)
     kadf <- as.data.frame(as.matrix(kaks_result$ka))
@@ -57,7 +56,6 @@ ka <- function(file_path) {
           next
         }
         
-        # Collect Ka/Ks values for humans vs other species
         if (!is.na(kratio[i, j]) && is.numeric(kratio[i, j])) {
           key <- paste("HUMAN", species_2, sep = "-")
           gene_results[[key]] <- round(kratio[i, j], 3)
@@ -72,22 +70,20 @@ ka <- function(file_path) {
   return(gene_results)
 }
 
+# Process all FASTA files in a directory and compile Ka/Ks results
 process_directory <- function(directory_path) {
   setwd(directory_path)
   cat("Current working directory:", getwd(), "\n")
   
   fasta_files <- list.files(pattern = "\\.fa$|\\.fasta$", full.names = TRUE)
   
-  # Initialize a list to store results for this directory
   results <- setNames(vector("list", length(fasta_files)), basename(fasta_files))
   
-  # Process each .fa or .fasta file and store the results
   for (file_path in fasta_files) {
     file_name <- tools::file_path_sans_ext(basename(file_path))
     results[[file_name]] <- ka(file_path)
   }
   
-  # Combine results into a single data frame in long format and process similarly as before
   output_df_long <- bind_rows(
     lapply(names(results), function(gene_name) {
       gene_results <- results[[gene_name]]
@@ -108,7 +104,6 @@ process_directory <- function(directory_path) {
     mutate(across(where(is.character), ~ifelse(. == "Inf", NA_character_, .))) %>%
     select(gene, everything())
   
-  # Write to an Excel file
   output_file_name <- "output_results.xlsx"
   setwd("..")
   write_xlsx(output_df_wide, output_file_name)
@@ -117,47 +112,39 @@ process_directory <- function(directory_path) {
   return(output_df_wide)
 }
 
+# Calculate basic statistics from the data in an Excel file
 calculate_stats <- function(filepath) {
   data <- read_excel(filepath)
   
-  # Check if the third column exists
   if (ncol(data) < 3) {
     stop("The file ", filepath, " does not have a third column.")
   }
   
-  # Calculate statistics
   mean_val <- mean(data[[3]], na.rm = TRUE)
   sd_val <- sd(data[[3]], na.rm = TRUE)
   count_val <- sum(!is.na(data[[3]]))
   
-  # Return as a named list
   return(list(mean = mean_val, sd = sd_val, count = count_val))
 }
 
-# Main execution
+# Main execution block
 setwd("temp")
 alignfolder <- readLines("alignfolder.txt", warn = FALSE)
 output_df_wide <- process_directory(file.path(getwd(), "..", "results", alignfolder))
 
-# Get a list of all .xlsx files in the current directory
 files <- list.files(pattern = "\\.xlsx$", full.names = TRUE)
 
-# Initialize a list to store results
 results <- list()
 
-# Loop through files and calculate statistics
 for (file in files) {
   stats <- calculate_stats(file)
-  stats$name <- basename(file) # Add the filename to the stats list
+  stats$name <- basename(file)
   results[[length(results) + 1]] <- stats
 }
 
-# Combine all results into a data frame
 summary_df <- do.call(rbind, lapply(results, as.data.frame))
 row.names(summary_df) <- NULL
 
-# Write the summary to a new Excel file
 write_xlsx(summary_df, "summary.xlsx")
 
-# Output to console to indicate completion
 cat("Summary file created with", nrow(summary_df), "rows.\n")
