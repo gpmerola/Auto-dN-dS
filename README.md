@@ -64,7 +64,7 @@ This directory contains the main results.
 
   - summary.xlsx: An Excel file summarizing the statistics of the Ka/Ks ratios for each gene. This file includes mean, standard deviation, and count of valid Ka/Ks ratios for each gene.
 
-### temp directory
+### "temp" directory
 This directory contains log files and necessary intermediate files.
 
   - alignfolder.txt: A text file containing the name of the directory where the alignment files are stored. This is used for reference in subsequent steps.
