@@ -58,7 +58,7 @@ This directory contains the main results.
 
   - Fetched CDS sequences for <species>.fasta/: Directory containing FASTA files for the CDS sequences for each gene symbol.
 
-  - 1Alignments_Human_<species>/: Directory containing alignment FASTA files for each gene.
+  - 1Alignments_Human_{species}/: Directory containing alignment FASTA files for each gene.
 
   - output_results.xlsx: An Excel file containing the Ka/Ks ratios for each gene. This file provides a wide-format table where each row represents a gene, and columns represent different species pairs.
 
@@ -71,7 +71,7 @@ This directory contains log files and necessary intermediate files.
 
   - log.txt: A log file containing messages and any errors encountered during the processing of gene alignments.
 
-  - combined_<gene>.fasta: Combined FASTA files for each gene (before alignment).
+  - combined_{gene_name}.fasta: Combined FASTA files for each gene (before alignment).
 
 ## Troubleshooting
 Ensure that all dependencies are installed correctly.
