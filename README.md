@@ -20,7 +20,7 @@ Auto-dN-dS is a package designed to automate the retrieval, alignment, and dN/dS
 ## Prerequisites
   - Python 3.6 or higher
   - R 3.6 or higher
-  - Java (for running MACSE)
+  - Java 1.8.0 or higher
   - Git
 
 ## Setup
