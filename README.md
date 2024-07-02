@@ -19,7 +19,7 @@ Auto-dN-dS is a package designed to automate the retrieval, alignment, and dN/dS
 
   - 3align.py: this script aligns the fetched CDS using the MACSE tool in parallel processes and saves the aligned sequences, also logging any errors encountered during the process in the "temp" directory. It then saves the alignments in a separate subfolder within "results".
 
-  - 4qualityMOS.py: this script performs QC, calculating the multiple overlap score [(Mos; Lassmann et Sonnhammer, 2005)](https://academic.oup.com/nar/article/33/22/7120/1333952) for each set of aligned sequences in a directory, then deleting files with an MOS below a specified threshold (default 0.8).
+  - 4qualityMOS.py: this script performs QC, calculating the multiple overlap score [(MOS; Lassmann et Sonnhammer, 2005)](https://academic.oup.com/nar/article/33/22/7120/1333952) for each set of aligned sequences in a directory, then deleting files with an MOS below a specified threshold (default 0.8).
 
   - 5kaks.py: this R script processes sequence alignment files to calculate dN/dS values for human versus other species pairs, stores the results in Excel files, and then calculates summary statistics from those Excel files. All results are saved in "results".
 
