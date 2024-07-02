@@ -8,8 +8,6 @@ Auto-dN-dS is a package designed to automate the retrieval, alignment, and dN/dS
 - [Setup](#setup)
 - [Usage](#usage)
 - [Output Files](#output-files)
-  - ["results" directory](#results-directory)
-  - ["temp" directory](#temp-directory)
 - [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
