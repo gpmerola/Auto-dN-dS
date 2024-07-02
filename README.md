@@ -9,8 +9,6 @@ Auto-dN-dS is a package designed to automate the retrieval, alignment, and dN/dS
 - [Usage](#usage)
 - [Output Files](#output-files)
 - [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
   - mastercode.py: main script, it allows users to select and run specific scripts or all available scripts in a directory.
@@ -87,9 +85,3 @@ This directory contains log files and necessary intermediate files.
 Ensure that all dependencies are installed correctly.
 Check log.txt for any error messages during the processing steps.
 Verify that the species name provided is acceptable as per Ensembl's list.
-
-## Contributing
-Contributions are welcome. Please submit a pull request or open an issue to discuss any changes or improvements.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
